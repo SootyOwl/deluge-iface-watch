@@ -12,8 +12,8 @@ from setuptools import find_packages, setup
 __plugin_name__ = "IfaceWatch"
 __author__ = "Bro"
 __author_email__ = "bro.devel+ifacewatch@gmail.com"
-__version__ = "2.0"
-__url__ = "https://github.com/bendikro/deluge-iface-watch"
+__version__ = "2.0.1"
+__url__ = "https://github.com/SootyOwl/deluge-iface-watch"
 __license__ = "GPLv3"
 __description__ = """
 Iface Watch will monitor a specified network interface and
@@ -30,6 +30,8 @@ setup(
     description=__description__,
     author=__author__,
     author_email=__author_email__,
+    maintainer="SootyOwl",
+    maintainer_email="tyto+ifacewatch@tyto.cc",
     url=__url__,
     license=__license__,
     long_description=__long_description__ if __long_description__ else __description__,
@@ -48,4 +50,18 @@ setup(
             "ifcfg   = ifacewatch.include.ifcfg.src",
         ],
     },
+    python_requires=">=3.7",
+    classifiers=(
+        "Development Status :: 5 - Production/Stable",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Operating System :: OS Independent",
+    )
 )
