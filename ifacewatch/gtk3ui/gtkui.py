@@ -67,13 +67,14 @@ class GtkUI(Gtk3PluginBase):
         interval = self.get_object("spinbutton_update_interval").get_value()
         active = self.get_object("checkbutton_active").get_active()
 
-        if self.last_config is not None:
-            if self.last_config['interface'] != iface:
-                self.log.info("New interface specified: '%s'" % iface)
-            elif self.last_config['update_interval'] != interval:
-                pass
-            else:
-                return
+        current_config = {
+            "interface": iface,
+            "update_interval": int(interval),
+            "active": active,
+        }
+        # Return early if the configuration hasn't changed
+        if self.last_config == current_config:
+            return
         client.ifacewatch.save_config({"interface": iface, "update_interval": int(interval),
                                        "active": active})
 
