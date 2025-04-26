@@ -34,14 +34,18 @@ setup(
     license=__license__,
     long_description=__long_description__ if __long_description__ else __description__,
     packages=packages,
+    extras_require={"dev": ["pytest", "pytest-mock", "deluge", "PyGObject"]},
     package_data=__pkg_data__,
-    entry_points="""
-[deluge.plugin.core]
-{name} = {name_lower}:CorePlugin
-[deluge.plugin.gtk3ui]
-{name} = {name_lower}:Gtk3UIPlugin
-[{name_lower}.libpaths]
-pyiface = {name_lower}.include.pyiface
-ifcfg = {name_lower}.include.ifcfg.src
-""".format(name=__plugin_name__, name_lower=__plugin_name__.lower())
+    entry_points={
+        "deluge.plugin.core": [
+            f"{__plugin_name__} = {__plugin_name__.lower()}:CorePlugin",
+        ],
+        "deluge.plugin.gtk3ui": [
+            f"{__plugin_name__} = {__plugin_name__.lower()}:Gtk3UIPlugin",
+        ],
+        f"{__plugin_name__.lower()}.libpaths": [
+            "pyiface = ifacewatch.include.pyiface",
+            "ifcfg   = ifacewatch.include.ifcfg.src",
+        ],
+    },
 )
